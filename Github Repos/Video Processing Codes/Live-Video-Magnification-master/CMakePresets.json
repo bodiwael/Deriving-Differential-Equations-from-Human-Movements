@@ -1,0 +1,76 @@
+{
+    "version": 10,
+    "configurePresets": [
+        {
+            "name": "ninja-nmc-base",
+            "hidden": true,
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_MAKE_PROGRAM": "C:/Qt/Tools/Ninja/ninja.exe"
+            }
+        },
+        {
+            "name": "msvc-base",
+            "hidden": true,
+            "inherits": "ninja-nmc-base",
+            "cacheVariables": {
+                "CMAKE_PREFIX_PATH": "C:/Qt/6.8.1/msvc2022_64",
+                "OpenCV_DIR": "C:/opencv/build"
+            },
+            "environment": {
+                "PATH": "C:/Qt/6.8.1/msvc2022_64/bin;C:/opencv/build/x64/vc16/bin;$penv{PATH}"
+            }
+        },
+        {
+            "name": "mingw-base",
+            "hidden": true,
+            "inherits": "ninja-nmc-base",
+            "cacheVariables": {
+                "CMAKE_PREFIX_PATH": "C:/Qt/6.8.1/mingw_64",
+                "OpenCV_DIR": "C:/OpenCV-MinGW-Build-OpenCV-4.5.5-x64",
+                "CMAKE_C_COMPILER": "C:/mingw64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/mingw64/bin/g++.exe"
+            },
+            "environment": {
+                "PATH": "C:/Qt/6.8.1/mingw_64/bin;C:/OpenCV-MinGW-Build-OpenCV-4.5.5-x64/x64/mingw/bin;C:/mingw64/bin;$penv{PATH}"
+            }
+        },
+        {
+            "name": "msvc",
+            "displayName": "MSVC",
+            "inherits": "msvc-base"
+        },
+        {
+            "name": "mingw",
+            "displayName": "MinGW",
+            "inherits": "mingw-base"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "msvc-debug",
+            "configurePreset": "msvc",
+            "displayName": "Debug",
+            "configuration": "Debug"
+        },
+        {
+            "name": "msvc-release",
+            "configurePreset": "msvc",
+            "displayName": "Release",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "mingw-debug",
+            "configurePreset": "mingw",
+            "displayName": "Debug",
+            "configuration": "Debug"
+        },
+        {
+            "name": "mingw-release",
+            "configurePreset": "mingw",
+            "displayName": "Release",
+            "configuration": "RelWithDebInfo"
+        }
+    ]
+}
