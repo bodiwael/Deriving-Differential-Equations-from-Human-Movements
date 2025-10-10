@@ -73,9 +73,7 @@ exercise-classification/
 │   └── README.md                   # Approach 2 detailed docs
 │
 ├── docs/
-│   ├── comparison.md               # Approach 1 vs Approach 2
-│   ├── deployment.md               # Production deployment guide
-│   └── paper.md                    # Research paper draft
+│   └──comparison.md               # Approach 1 vs Approach 2
 │
 ├── LICENSE
 └── README.md                       # This file
