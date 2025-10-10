@@ -50,8 +50,6 @@ This project implements and compares two state-of-the-art approaches for automat
 exercise-classification/
 │
 ├── Approach-1-IMU-Based/           # 🔴 IMU Sensor-Based Classification
-│   ├── data/
-│   │   └── README.md               # Data structure & format
 │   ├── scripts/
 │   │   ├── 1_main.py              # Data synchronization
 │   │   ├── 2_process.py           # Feature computation
@@ -65,18 +63,12 @@ exercise-classification/
 │   └── README.md                   # Approach 1 detailed docs
 │
 ├── Approach-2-Video-Based/         # 🔵 Video Pose-Based Classification
-│   ├── data/
-│   │   └── README.md               # Dataset organization
 │   ├── scripts/
-│   │   ├── 1_keypoint_extraction.py
-│   │   ├── 2_visualization_analysis.py
-│   │   ├── 3_model_training.py
-│   │   ├── 4_fully_connected_nn.py
-│   │   └── 5_inference.py
+│   │   ├── 1_"Front View Landmarks - Training.ipynb"
+│   │   └── 2_"Side View Landmarks - Training.ipynb"
 │   ├── results/
-│   │   ├── paper_visualizations/
-│   │   ├── model_results/
-│   │   └── comparison_plots/
+│   │   ├── "Front View Results"/
+│   │   └── "Side View Results"/
 │   ├── requirements.txt
 │   └── README.md                   # Approach 2 detailed docs
 │

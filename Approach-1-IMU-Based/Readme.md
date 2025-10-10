@@ -287,15 +287,7 @@ python scripts/5_final_training.py
 🎯 PERSON-BASED Test Accuracy: 92.50%
 
 Classification Report:
-                    precision    recall  f1-score   support
-         lunges       0.88      0.88      0.88       238
-             pu       0.83      0.96      0.89       185
-            shp       0.95      0.96      0.95       195
-             sq       0.57      0.57      0.57       190
-
-       accuracy                           0.84       808
-      macro avg       0.81      0.84      0.82       808
-   weighted avg       0.81      0.84      0.82       808
+![Alt text](results/classification_report.png)
 ```
 
 ---
@@ -322,14 +314,7 @@ Classification Report:
 
 ### **Confusion Matrix:**
 
-```
-                Predicted
-            PU   Lunges  SQ   SHP
-Actual  PU  153    21     7    4
-      Lung   14   210    11    3
-        SQ   18    61    108   3
-       SHP    6     3     0   186
-```
+![Alt text](results/confusion_matrix.png)
 
 **Key Observations:**
 - **Squats ↔ Lunges:** Most confusion (both lower-body exercises)
@@ -484,23 +469,5 @@ minimize: ||acceleration - Θ(X)·ξ||₂² + α||ξ||₁
 
 ---
 
-## 🎓 **Publications & References**
-
-1. **SINDy Paper:**  
-   Brunton, S. L., Proctor, J. L., & Kutz, J. N. (2016). Discovering governing equations from data by sparse identification of nonlinear dynamical systems. *PNAS*, 113(15), 3932-3937.
-
-2. **IMU-based HAR:**  
-   Wang, A., Chen, G., Yang, J., et al. (2016). A comparative study on human activity recognition using inertial sensors in a smartphone. *IEEE Sensors Journal*, 16(11), 4566-4578.
-
----
-
-## 📧 **Support**
-
-For issues specific to Approach 1:
-- Check [Troubleshooting](#troubleshooting) section
-- Open an issue on GitHub
-- Email: your.email@university.edu
-
----
 
 **[← Back to Main README](../README.md)** | **[Compare with Approach 2 →](../docs/comparison.md)**
