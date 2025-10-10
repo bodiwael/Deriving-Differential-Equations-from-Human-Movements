@@ -60,7 +60,7 @@ exercise-classification/
 │   │   └── 5_final_training.py    # Model training
 │   ├── results/
 │   │   ├── confusion_matrix.png
-│   │   └── classification_report.txt
+│   │   └── classification_report.png
 │   ├── requirements.txt
 │   └── README.md                   # Approach 1 detailed docs
 │
@@ -272,40 +272,12 @@ If you use this code in your research, please cite:
 }
 ```
 
----
-
-## 🤝 **Contributing**
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Commit your changes (`git commit -am 'Add improvement'`)
-4. Push to the branch (`git push origin feature/improvement`)
-5. Open a Pull Request
-
----
-
-## 📧 **Contact**
-
-- **Author:** Your Name
-- **Email:** your.email@university.edu
-- **Institution:** Your University
-- **Lab:** Human Movement Analysis Lab
 
 ---
 
 ## 📄 **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 **Acknowledgments**
-
-- MediaPipe team for the pose estimation framework
-- Scikit-learn developers for machine learning tools
-- EJUST-GYM dataset contributors
-- Research lab members and participants
 
 ---
 
@@ -329,9 +301,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Additional exercise types
 - [ ] Transfer learning across datasets
 - [ ] Hybrid IMU + Video approach
-
----
-
-**⭐ If you find this project useful, please give it a star!**
-
-Last Updated: January 2025

@@ -1,1 +1,0 @@
-# Deriving-Differential-Equations-from-Human-Movements

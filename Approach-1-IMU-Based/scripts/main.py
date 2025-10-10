@@ -21,7 +21,7 @@ timestamp_regex = re.compile(r"_C\d+-(\d{4}-\d{2}-\d{2}T\d{2}\.\d{2}\.\d{2}\.\d+
 # Function to safely read CSV files
 def safe_read_csv(filepath):
     try:
-        df = pd.read_csv(filepath, usecols=["timestamp (+0200)", "x-axis (g)", "y-axis (g)", "z-axis (g)"], encoding="utf-8", engine="python")
+        df = pd.read_csv(filepath, usecols=["timestamp (+0200)", "x-axis (deg/s)", "y-axis (deg/s)", "z-axis (deg/s)"], encoding="utf-8", engine="python")
         if df.empty:
             print(f"⚠️ Warning: Empty CSV file - {filepath}")
         return df
@@ -50,7 +50,7 @@ for folder in os.listdir(data_dir):
 
                 # Loop through sensor files inside the trial folder
                 for file in os.listdir(folder_path):
-                    if file.endswith(".csv") and "Accelerometer" in file:
+                    if file.endswith(".csv") and "Gyroscope" in file:
                         print(f"📄 Processing File: {file}")
 
                         # Extract sensor point name from filename
@@ -71,7 +71,7 @@ for folder in os.listdir(data_dir):
                             print(f"📊 Data preview for {file}:\n{df.head()}")
 
                             # Rename columns to include sensor point
-                            df = df.rename(columns={"x-axis (g)": f"X_{point_name}", "y-axis (g)": f"Y_{point_name}", "z-axis (g)": f"Z_{point_name}"})
+                            df = df.rename(columns={"x-axis (deg/s)": f"X_{point_name}", "y-axis (deg/s)": f"Y_{point_name}", "z-axis (deg/s)": f"Z_{point_name}"})
 
                             # Merge based on timestamp
                             if trial_data is None:

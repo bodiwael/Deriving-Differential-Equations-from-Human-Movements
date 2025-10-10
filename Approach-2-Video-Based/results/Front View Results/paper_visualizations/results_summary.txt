@@ -1,0 +1,34 @@
+EXERCISE CLASSIFICATION - RESULTS SUMMARY
+Dataset: ['front', 'side'] view
+Total samples: 390
+Number of features: 210
+Classes: lunges, pu, shp, sq
+
+Model Performance:
+
+RANDOM_FOREST:
+  Test Accuracy: 100.00%
+  CV Accuracy: 100.00% (+/- 0.00%)
+
+GRADIENT_BOOSTING:
+  Test Accuracy: 100.00%
+  CV Accuracy: 97.06% (+/- 1.86%)
+
+SVM:
+  Test Accuracy: 100.00%
+  CV Accuracy: 100.00% (+/- 0.00%)
+
+Best Model: RANDOM_FOREST
+Test Accuracy: 100.00%
+
+Classification Report (Test Set):
+              precision    recall  f1-score   support
+
+      lunges      1.000     1.000     1.000        15
+          pu      1.000     1.000     1.000        15
+         shp      1.000     1.000     1.000        15
+          sq      1.000     1.000     1.000        14
+
+    accuracy                          1.000        59
+   macro avg      1.000     1.000     1.000        59
+weighted avg      1.000     1.000     1.000        59

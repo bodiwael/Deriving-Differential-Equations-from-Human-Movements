@@ -7,38 +7,37 @@ input_dir = "processed_data"  # Folder containing movement folders
 output_dir = "final_processed_data"  # Folder to save processed data
 os.makedirs(output_dir, exist_ok=True)
 
-# Function to process accelerometer data for all sensors
-def process_accelerometer_data(filepath):
+# Function to process gyroscope data
+def process_gyroscope_data(filepath):
     print(f"📂 Processing file: {filepath}")
 
     # Load CSV
     df = pd.read_csv(filepath)
 
-    # Convert timestamp to datetime and sort data
+    # Convert timestamp to datetime and sort
     df["timestamp (+0200)"] = pd.to_datetime(df["timestamp (+0200)"], format="%Y-%m-%dT%H.%M.%S.%f")
     df = df.sort_values("timestamp (+0200)")
 
-    # Compute time differences (dt) in seconds
+    # Compute time delta in seconds
     df["dt"] = df["timestamp (+0200)"].diff().dt.total_seconds().fillna(0)
 
-    # Convert all acceleration columns from g to m/s²
-    acceleration_cols = [col for col in df.columns if col.startswith(("X_", "Y_", "Z_"))]
-    for col in acceleration_cols:
-        df[col] = df[col] * 9.81  # Convert g to m/s²
+    # Get all gyroscope columns (deg/s)
+    gyro_cols = [col for col in df.columns if col.startswith(("X_", "Y_", "Z_"))]
 
-    # Compute velocity using trapezoidal integration
-    for col in acceleration_cols:
-        v_col = col.replace("_", "_V")  # Example: X_LC -> X_V_LC
-        df[v_col] = np.cumsum(df[col] * df["dt"])  # Integrate acceleration to get velocity
+    for col in gyro_cols:
+        # Angular acceleration (deg/s²) = diff(angular velocity) / dt
+        a_col = col.replace("_", "_A")  # Example: X_LThigh -> X_A_LThigh
+        df[a_col] = df[col].diff() / df["dt"]
+        df[a_col] = df[a_col].fillna(0)
 
-    # Compute displacement using trapezoidal integration
-    for col in acceleration_cols:
-        d_col = col.replace("_", "_D")  # Example: X_LC -> X_D_LC
-        v_col = col.replace("_", "_V")  # Corresponding velocity column
-        df[d_col] = np.cumsum(df[v_col] * df["dt"])  # Integrate velocity to get displacement
+        # Angular displacement (deg) = ∫ angular velocity * dt
+        d_col = col.replace("_", "_D")  # Example: X_LThigh -> X_D_LThigh
+        df[d_col] = np.cumsum(df[col] * df["dt"])
 
-    # Drop unnecessary columns
-    keep_cols = ["timestamp (+0200)", "dt"] + acceleration_cols + [col.replace("_", "_V") for col in acceleration_cols] + [col.replace("_", "_D") for col in acceleration_cols]
+    # Select useful columns
+    keep_cols = ["timestamp (+0200)", "dt"] + gyro_cols + \
+                [col.replace("_", "_A") for col in gyro_cols] + \
+                [col.replace("_", "_D") for col in gyro_cols]
     df = df[keep_cols]
 
     return df
@@ -58,7 +57,7 @@ for movement_folder in os.listdir(input_dir):
         for file in os.listdir(movement_path):
             if file.endswith(".csv"):
                 file_path = os.path.join(movement_path, file)
-                processed_df = process_accelerometer_data(file_path)
+                processed_df = process_gyroscope_data(file_path)
 
                 # Save processed file in the corresponding movement folder
                 output_path = os.path.join(movement_output_dir, file)
