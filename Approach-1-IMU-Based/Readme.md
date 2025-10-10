@@ -287,8 +287,8 @@ python scripts/5_final_training.py
 🎯 PERSON-BASED Test Accuracy: 92.50%
 
 Classification Report:
-![Alt text](results/classification_report.png)
 ```
+![Alt text](results/classification_report.png)
 
 ---
 
